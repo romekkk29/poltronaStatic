@@ -102,6 +102,7 @@ $('.price').each(function () {
 	var formatedPrice = new Intl.NumberFormat('es-AR', {
 		style: 'currency',
 		currency: 'ARS',
+		minimumFractionDigits: '0',
 	}).format(number);
 
 	$(this).text(formatedPrice);
@@ -177,19 +178,19 @@ $("#buscarProducto").on("keyup", function () {
 
 // DESCARGAR PDF
 // --------------------------------------------
-// var doc = new jsPDF();
-// var specialElementHandlers = {
-//     '.printable': function (element, renderer) {
-//         return true;
-//     }
-// };
+ var doc = new jsPDF();
+ var specialElementHandlers = {
+     '.printable': function (element, renderer) {
+         return true;
+     }
+ };
 
-// $('#btnDescargar').click(function () {
-//     doc.fromHTML($('.printable').html(), 15, 15, {
-//         'width': 170,
-//             'elementHandlers': specialElementHandlers
-//     });
-//     doc.save('qr-name.pdf');
-// });
+ $('#btnDescargar').click(function () {
+     doc.fromHTML($('.printable').html(), 15, 15, {
+         'width': 170,
+             'elementHandlers': specialElementHandlers
+     });
+     doc.save('qr-name.pdf');
+ });
 
-// var base_url = window.location.origin;
+ var base_url = window.location.origin;
